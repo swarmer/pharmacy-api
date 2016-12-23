@@ -5,4 +5,4 @@ if [ ! -d docker/build/ ]; then
 fi
 
 docker/zip_source.sh
-docker build -t pharmacy-api docker/
+docker build -t swarmer/pharmacy-api docker/
