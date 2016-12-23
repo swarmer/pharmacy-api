@@ -3,11 +3,35 @@
 from cornice import Service
 
 
-hello = Service(name='hello', path='/', description="Simplest app")
+drugs = Service(name='drugs', path='/drugs', description='Drugs resource')
 
 
-@hello.get()
-def get_info(request):
-    """Returns Hello in JSON."""
-    return {'Hello': 'World'}
+DRUGS = []
+PHARMACIES = []
 
+
+@drugs.get()
+def get_drugs(request):
+    return DRUGS
+
+
+@drugs.put()
+def put_drugs(request):
+    DRUGS[:] = request.json_body
+    return {'status': 'ok'}
+
+
+pharmacies = Service(
+    name='pharmacies', path='/pharmacies', description='Pharmacies resource'
+)
+
+
+@pharmacies.get()
+def get_pharmacies(request):
+    return PHARMACIES
+
+
+@pharmacies.put()
+def put_pharmacies(request):
+    PHARMACIES[:] = request.json_body
+    return {'status': 'ok'}
