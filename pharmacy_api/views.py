@@ -3,7 +3,16 @@
 from cornice import Service
 
 
-drugs = Service(name='drugs', path='/drugs', description='Drugs resource')
+cors_policy = {
+    'origins': ['*'],
+    'expose_all_headers': True,
+}
+
+
+drugs = Service(
+    name='drugs', path='/drugs', description='Drugs resource',
+    cors_policy=cors_policy,
+)
 
 
 DRUGS = []
@@ -22,7 +31,8 @@ def put_drugs(request):
 
 
 pharmacies = Service(
-    name='pharmacies', path='/pharmacies', description='Pharmacies resource'
+    name='pharmacies', path='/pharmacies', description='Pharmacies resource',
+    cors_policy=cors_policy,
 )
 
 
